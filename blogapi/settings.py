@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-d7+y&zpwpsljjxrf-ivvcrfe%-=92rz8uv@_v*=ogwq)uq8a(y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1','signature-websitefrontend-production.up.railway.app','signature-websitebackend-production.up.railway.app']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -89,7 +89,14 @@ WSGI_APPLICATION = 'blogapi.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Db',
+        'USER': 'postgres',
+        'PASSWORD': 'Ricesoupe@2002',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
 }
 
 # Password validation
@@ -133,6 +140,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
+
 MEDIA_ROOT = BASE_DIR / 'media'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
