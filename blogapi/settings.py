@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'blogapi.wsgi.application'
 
 import dj_database_url
 from dotenv import load_dotenv
-load_dotenv(os.path.join(BASE_DIR, '.env'))
+#load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 DATABASES = {
     'default': {
