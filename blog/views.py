@@ -100,3 +100,14 @@ def get_user_info(request):
         'email': user.email,
         'is_superuser': user.is_superuser,
     })
+
+# Admin-only endpoint to delete a comment
+@api_view(['DELETE'])
+@permission_classes([IsAdminUser])
+def admin_delete_comment(request, comment_id):
+    try:
+        comment = Comment.objects.get(id=comment_id)
+        comment.delete()
+        return Response({'message': 'Comment deleted successfully.'}, status=status.HTTP_204_NO_CONTENT)
+    except Comment.DoesNotExist:
+        return Response({'error': 'Comment not found.'}, status=status.HTTP_404_NOT_FOUND)

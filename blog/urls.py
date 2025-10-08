@@ -6,7 +6,7 @@ from .views import signup_view
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import test_image
-from .views import get_user_info
+from .views import get_user_info, admin_delete_comment
 from rest_framework.routers import DefaultRouter
 
 from django.urls import path, include
@@ -23,6 +23,9 @@ urlpatterns = [
     path('api/user/', get_user_info),
     path('posts/', PostListAPIView.as_view(), name='post-list'),
     path('posts/<int:pk>/', PostDetailAPIView.as_view(), name='post-detail'),
+
+    # Admin endpoint to delete comment
+    path('api/comments/<int:comment_id>/delete/', admin_delete_comment, name='admin_delete_comment'),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
