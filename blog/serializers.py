@@ -20,9 +20,3 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         fields = '__all__'
 
-    def validate(self, data):
-        document = data.get('document')
-        subcategory = data.get('subcategory')
-        if document and subcategory != 'files':
-            raise serializers.ValidationError('Documents can only be uploaded for Files subcategory.')
-        return data
