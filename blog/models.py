@@ -10,6 +10,7 @@ class Post(models.Model):
 
     SUBCATEGORY_CHOICES = [
         ("personal", "Personal"),
+        ("achievements", "Achievements"),
         ("Experiences", "Experiences"),
         ("case studies", "Case Studies"),
         ("projects", "Projects"),
